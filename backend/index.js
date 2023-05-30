@@ -25,6 +25,8 @@ app.set("views", path.join(__dirname, "views"));
 
 // Set EJS as the template engine
 app.set("view engine", "ejs");
+
+
 app.get("/", (req, res) => res.status(200).send("Hello World"));
 
 app.use("/api/books", bookRoutes);

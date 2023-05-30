@@ -42,7 +42,7 @@ const page = () => {
       .then((response) => {
         // Handle the response
         console.log(response.data);
-        router.push("pages/login")
+        router.push(`pages/otpverification/${response.data.data.userId}`)
         // addToast('You have logged in successfully', { appearance: 'success', autoDismiss: true });
       })
       .catch((error) => {
