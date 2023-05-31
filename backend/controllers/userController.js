@@ -174,6 +174,11 @@ export const authUser = asyncHandler(async (req, res) => {
   }
 });
 
+export const passwordChange = asyncHandler(async (req, res) => {
+  const { email, password, token } = req.body;
+  
+});
+
 export const allUsers = asyncHandler(async (req, res) => {
   const keyword = req.query.search
     ? {
@@ -187,4 +192,23 @@ export const allUsers = asyncHandler(async (req, res) => {
 
   const users = (await User.find(keyword)).find({ _id: { $ne: req.user._id } });
   res.send(users);
+});
+export const editProfile = asyncHandler(async (req, res) => {
+  try {
+    let id = req.params.id;
+
+    // this searches the id from the User model and the exec executes the query of hte mongoo
+    let userToUpdate = await User.findById(id).exec();
+
+    if (!userToUpdate) {
+      res.status(400).json({ message: "user not found" });
+    }
+    // object. assign compares the key, if the key is same it updates the data if the key is not found it updates the data
+    Object.assign(userToUpdate, req.body);
+    const updatedUser = await userToUpdate.save();
+    res.status(200).json(updatedUser);
+  } catch (err) {
+    res.status(400);
+    throw new Error(err.message);
+  }
 });
