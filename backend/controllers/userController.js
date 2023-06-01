@@ -2,8 +2,16 @@ import asyncHandler from "express-async-handler";
 import User from "../model/userModel.js";
 import generateToken from "../config/generateToken.js";
 import cloudinary from "../utils/cloudary.js";
-import sendVerifyMail from "../config/sendVerifyMail.js";
+import {
+  sendVerifyMail,
+  sendForgetPassword,
+} from "../config/sendVerifyMail.js";
 import UserOTPVerification from "../model/UserOTPVerification.js";
+
+const sendResetPasswordMail = async (name, email, token) => {
+  try {
+  } catch (error) {}
+};
 
 // export const registerUser = asyncHandler(async (req, res) => {
 //   const { name, email, password, pic, verified } = req.body;
@@ -174,9 +182,29 @@ export const authUser = asyncHandler(async (req, res) => {
   }
 });
 
-export const passwordChange = asyncHandler(async (req, res) => {
-  const { email, password, token } = req.body;
-  
+export const forgotPassword = asyncHandler(async (req, res) => {
+  const { email } = req.body;
+  try {
+    if (!email) {
+      res.status(400);
+      throw new Error("email is required");
+    } else {
+      const checkEmail = await User.findOne({ email });
+      if (checkEmail) {
+        const token = generateToken(checkEmail?._id);
+        const data = await User.updateOne(
+          { email: email },
+          { $set: { token: token } }
+        );
+        sendForgetPassword(checkEmail?.name, checkEmail?.email, token);
+        res.status(200).send({ success: true, msg: "Please check your inbox" });
+      }
+      console.log(token);
+    }
+  } catch (error) {
+    res.status(400);
+    throw new Error(error.message);
+  }
 });
 
 export const allUsers = asyncHandler(async (req, res) => {

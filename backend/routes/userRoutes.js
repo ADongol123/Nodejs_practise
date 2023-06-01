@@ -5,6 +5,7 @@ import {
   editProfile,
   registerUser,
   verifyMail,
+  forgotPassword,
 } from "../controllers/userController.js";
 import { protect } from "../middleware/authMiddleWare.js";
 
@@ -14,4 +15,5 @@ router.route("/").post(registerUser).get(protect, allUsers);
 router.post("/verify", verifyMail);
 router.post("/login", authUser);
 router.patch("/profile/:id", editProfile);
+router.post("/forgotpassword", forgotPassword);
 export default router;

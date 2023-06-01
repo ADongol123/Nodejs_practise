@@ -52,7 +52,7 @@ function generateVerificationNumber() {
 //   }
 // };
 
-const sendVerifyMail = async (_id, email, res) => {
+export const sendVerifyMail = async (_id, email, res) => {
   try {
     const otp = `${Math.floor(1000 + Math.random() * 90000)}`;
     const mailOptions = {
@@ -92,4 +92,28 @@ const sendVerifyMail = async (_id, email, res) => {
     });
   }
 };
-export default sendVerifyMail;
+
+export const sendForgetPassword = async (name, email, token) => {
+  try {
+    const mailOptions = {
+      from: "ayussh222dongol@gmail.com",
+      to: email,
+      subject: "For Reset Password",
+      html:
+        "<p>Hii " +
+        name +
+        ', Please click the link <a href="http://localhost:3000/pages/forget-password?token=' +
+        token +
+        '">Click me</a> to reset the password </p>',
+    };
+    transporter.sendMail(mailOptions, function (error, info) {
+      if (error) {
+        console.log(error);
+      } else {
+        console.log("Email has been send", info.response);
+      }
+    });
+  } catch (error) {
+    res.status(400).send({ success: false, msg: error.message });
+  }
+};
