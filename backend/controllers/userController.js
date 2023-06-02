@@ -7,6 +7,7 @@ import {
   sendForgetPassword,
 } from "../config/sendVerifyMail.js";
 import UserOTPVerification from "../model/UserOTPVerification.js";
+import bcrypt from "bcryptjs";
 
 const sendResetPasswordMail = async (name, email, token) => {
   try {
@@ -207,6 +208,36 @@ export const forgotPassword = asyncHandler(async (req, res) => {
   }
 });
 
+export const resetPassword = asyncHandler(async (req, res) => {
+  const { password, confirmpass, token } = req.body;
+  try {
+    const user_data = await User.findOne({ token });
+
+    if (!user_data) {
+      return res.status(400).json({ message: "Invalid token" });
+    }
+
+    const old_pass = await bcrypt.compare(password, user_data.password);
+    console.log(old_pass, "userdata");
+    if (password === confirmpass) {
+      if (old_pass) {
+        return res.status(200).json({
+          mess: "Please enter a different password than your old password",
+        });
+      } else {
+        user_data.password = password; // Update the password value
+        const updatedUser = await user_data.save(); // this saves the data to the database
+        return res.status(200).json(updatedUser);
+      }
+    } else {
+      return res.status(200).json({
+        mess: "Password does not match",
+      });
+    }
+  } catch (err) {
+    return res.status(400).json({ message: err.message });
+  }
+});
 export const allUsers = asyncHandler(async (req, res) => {
   const keyword = req.query.search
     ? {
