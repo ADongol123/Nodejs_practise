@@ -1,3 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.custom-background {
+  background-image: url('https://bookworm.madrasthemes.com/wp-content/plugins/bookwormgb/dist/images/block-hero-carousel-1-pattern.cefc31e.jpg');
+  background-size: cover;
+  background-position: center;
+}
