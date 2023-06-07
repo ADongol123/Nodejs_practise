@@ -8,6 +8,7 @@ export const navdata = [
   {
     id: 2,
     title: "Categories",
+    route: "pages/product-category"
   },
   {
     id: 3,
