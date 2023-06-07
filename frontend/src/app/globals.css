@@ -10,3 +10,20 @@
 .hovered {
   transition: all 0.2s ease-in-out;
 }
+.star-rating {
+  display: inline-block;
+}
+
+.half-star {
+  position: relative;
+  display: inline-block;
+}
+
+.star-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: yellow;
+  overflow: hidden;
+  width: 50%;
+}
