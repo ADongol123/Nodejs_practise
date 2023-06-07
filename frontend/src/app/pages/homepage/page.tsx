@@ -1,6 +1,9 @@
 "use client"
+import Author from '@/app/components/Author';
 import BestSellingBooks from '@/app/components/BestSellingBooks';
+import FeaturedBooks from '@/app/components/FeaturedBooks';
 import FeaturedCategories from '@/app/components/FeaturedCategories';
+import Fotter from '@/app/components/Fotter';
 import Navbar from '@/app/components/Navbar';
 import axios from 'axios';
 import Image from 'next/image';
@@ -28,6 +31,9 @@ const HomePage = () => {
       </div>
       <FeaturedCategories />
       <BestSellingBooks />
+      <FeaturedBooks />
+      <Author />
+      <Fotter />
       {/* <button onClick={handleFormSubmit} className='border border-[black] cursor-pointer'>Logout</button> */}
     </div>
   )
