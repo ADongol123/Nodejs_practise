@@ -17,7 +17,7 @@ const BookCard = ({ image, name, brand, price }: any) => {
 
         >
           {ishovered ?
-            <div className='ml-4 mr-4 w-[280px] absolute top-[220px] z-40 bg-[white] hovered  '>
+            <div className=' w-full absolute top-[220px] z-40 bg-[white] hovered '>
               <h1 className='font-normal text-xs mt-2 text-[red]cursor-pointer  text-[red]'>KINDLE</h1>
               <p className='font-semibold text-base cursor-pointer '>{name}</p>
               <p className='font-light text-sm text-[gray] hover:text-[red] cursor-pointer'>{brand}</p>
@@ -28,7 +28,7 @@ const BookCard = ({ image, name, brand, price }: any) => {
               </div>
             </div>
             :
-            <div className='ml-4 mr-4'>
+            <div className='p-2'>
               <h1 className='font-normal text-xs text-[red]'>KINDLE</h1>
               <p className='font-bold text-base'>{name}</p>
               <p className='font-light text-sm text-[gray]'>{brand}</p>

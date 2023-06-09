@@ -10,16 +10,21 @@ import { IoLocationOutline } from "react-icons/io5"
 import { FiShoppingCart } from "react-icons/fi"
 import { navdata } from '../data/navdata'
 import { useRouter } from 'next/navigation'
+import Drawer from './Drawer'
 const Navbar = () => {
   const router = useRouter()
+  const [cartopen, setCartOpen] = React.useState(false)
   return (
     <div className="  px-14 ">
       <div className="flex justify-end gap-5 pt-5 ">
         <IoLocationOutline className="h-5 w-5 cursor-pointer" />
         <AiOutlineHeart className="h-5 w-5 cursor-pointer" />
         <MdOutlinePersonOutline className="h-5 w-5 cursor-pointer" />
-        <FiShoppingCart className="h-5 w-5 cursor-pointer" />
+        <FiShoppingCart className="h-5 w-5 cursor-pointer" onClick={() => setCartOpen(!cartopen)} />
       </div>
+      {
+        cartopen ? <Drawer /> : null
+      }
       <div className='flex items-center justify-between py-5'>
         <div className='flex items-center  gap-10'>
           <RiMenu2Fill className='mt-2 h-7 w-7' />
