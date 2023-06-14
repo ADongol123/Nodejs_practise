@@ -23,7 +23,7 @@ const Navbar = () => {
         <FiShoppingCart className="h-5 w-5 cursor-pointer" onClick={() => setCartOpen(!cartopen)} />
       </div>
       {
-        cartopen ? <Drawer /> : null
+        cartopen ? <Drawer cartopen={cartopen} setCartOpen={setCartOpen}/> : null
       }
       <div className='flex items-center justify-between py-5'>
         <div className='flex items-center  gap-10'>
