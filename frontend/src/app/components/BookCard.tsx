@@ -2,8 +2,15 @@ import Image from 'next/image'
 import React from 'react'
 import nullImage from "../../../public/images/null.jpg"
 import { AiOutlineHeart } from 'react-icons/ai'
-const BookCard = ({ image, name, brand, price }: any) => {
+import { useDispatch, useSelector } from 'react-redux'
+import { addToCart } from '../store/cartSlice'
+const BookCard = ({ image, name, brand, price, allDetails }: any) => {
+  const dispatch = useDispatch();
   const [ishovered, setIsHovered] = React.useState(false)
+  const handleAddToCart = (product: any) => {
+    dispatch(addToCart(product));
+  };
+  console.log(allDetails, "details")
   return (
     <div className='relative'
       onMouseEnter={() => setIsHovered(true)}
@@ -23,7 +30,7 @@ const BookCard = ({ image, name, brand, price }: any) => {
               <p className='font-light text-sm text-[gray] hover:text-[red] cursor-pointer'>{brand}</p>
               <p>${price}</p>
               <div className='flex items-center justify-between mb-3 cursor-pointer'>
-                <p >ADD TO CART</p>
+                <p onClick={() => handleAddToCart(allDetails)}>ADD TO CART</p>
                 <AiOutlineHeart className='h-5 w-5' />
               </div>
             </div>

@@ -20,6 +20,7 @@ const BestSellingBooks = () => {
                 name={details?.name}
                 brand={details?.brand}
                 price={details?.price}
+                allDetails={details}
               />
             </div>
           )}

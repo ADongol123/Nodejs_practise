@@ -11,9 +11,12 @@ import { FiShoppingCart } from "react-icons/fi"
 import { navdata } from '../data/navdata'
 import { useRouter } from 'next/navigation'
 import Drawer from './Drawer'
+import { useSelector } from 'react-redux';
 const Navbar = () => {
   const router = useRouter()
   const [cartopen, setCartOpen] = React.useState(false)
+  const cart = useSelector((state: any) => state.cart);
+  console.log(cart, "6565")
   return (
     <div className="  px-14 ">
       <div className="flex justify-end gap-5 pt-5 ">
@@ -23,7 +26,7 @@ const Navbar = () => {
         <FiShoppingCart className="h-5 w-5 cursor-pointer" onClick={() => setCartOpen(!cartopen)} />
       </div>
       {
-        cartopen ? <Drawer cartopen={cartopen} setCartOpen={setCartOpen}/> : null
+        cartopen ? <Drawer cart={cart} cartopen={cartopen} setCartOpen={setCartOpen} /> : null
       }
       <div className='flex items-center justify-between py-5'>
         <div className='flex items-center  gap-10'>
