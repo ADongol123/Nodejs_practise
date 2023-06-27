@@ -8,6 +8,16 @@ const bookModel = mongoose.Schema(
     price: { type: Number, required: true },
     discounts: { type: Number },
     image: { type: String, required: true },
+    views: {
+      type: Number,
+      // required: true,
+      default: 0,
+    },
+    sales: {
+      type: Number,
+      // required: true,
+      default: 0,
+    },
     // users: [
     //   {
     //     type: mongoose.Schema.Types.ObjectId,

@@ -8,8 +8,8 @@ import path, { dirname } from "path";
 import { fileURLToPath } from "url";
 dotenv.config();
 
-connectDB();
 
+connectDB();
 const app = express();
 
 app.use(cors());
