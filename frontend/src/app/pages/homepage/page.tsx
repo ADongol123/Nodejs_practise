@@ -24,7 +24,7 @@ const HomePage = () => {
     <div>
       <Navbar />
       <div className='custom-background flex items-center gap-[300px] px-28 py-28'>
-        <div className="flex flex-col gap-4">
+        <div className="flex flex-col gap-4 ">
           <h1 className="font-[700] text-[20px] text-[#bfb5b5]">THE BOOKWORM EDITORS</h1>
           <span className="font-[400] text-[50px]">Featured Books of the <b>{month[new Date().getMonth()]}</b></span>
           <div className="bg-[black] flex items-center justify-center text-[white] w-[130px] h-[40px]">See More</div>
