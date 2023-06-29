@@ -12,6 +12,7 @@ import { useRouter } from 'next/navigation';
 import Drawer from './Drawer';
 import { useSelector } from 'react-redux';
 import DropDown from './DropDown';
+import router from './../../../../backend/routes/userRoutes';
 
 const Navbar = () => {
   const router = useRouter();
@@ -52,7 +53,7 @@ const Navbar = () => {
                   >
                     {details?.icon === true ?
                       <DropDown title={details?.title} data={details?.data} />
-                      : <h1>{details?.title}</h1>}
+                      : <h1 onClick={() => details?.route ? router.push(details?.route) : null}>{details?.title}</h1>}
                   </div>
                   {/* {details?.icon ? <details.icon /> : null} */}
                 </div>

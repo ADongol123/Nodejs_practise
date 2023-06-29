@@ -68,6 +68,7 @@ export const navdata = [
   {
     id: 1,
     title: "Home",
+    route: "/"
   },
   {
     id: 2,
