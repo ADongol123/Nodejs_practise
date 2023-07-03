@@ -113,42 +113,26 @@ export const soldProduct = asyncHandler(async (req, res) => {
     const productIds = req.body.productIds; // Assuming the product IDs are passed in the request body as an array
     const userId = req.body.user; // Assuming the logged-in user's ID is available in the req.body.user field
 
-    const products = await Book.find({ _id: { $in: productIds } }); // Fetch the products based on the provided product IDs
-
-    console.log(productIds, userId);
-    if (products.length === 0) {
-      return res.status(404).json({ error: "No products found" });
+    const products = await Book.find({ _id: { $in: productIds } });
+    const users = await User.findById(userId).populate("user");
+    console.log(users, "users");
+    if (!products) {
+      throw new Error("No product found");
     }
-
-    const sales = [];
 
     for (let i = 0; i < products.length; i++) {
-      const product = products[i];
-      // Increment sales count
-      product.sales += 1;
-      await product.save();
-
-      // Retrieve the complete user data
-      const user = await User.findById(userId);
-
-      // Create a new Sales entry with complete user data
-      const newSale = new Sales({
-        productId: product._id, // Set the product ID
-        title: product.title, // Set the product title
-        sales: product.sales, // Set the sales count
-        user: user, // Set the complete user data
+      const productData = products[i];
+      // const userData = await
+      productData.sales += 1;
+      const allProduct = new Sales({
+        productId: productData?._id,
+        sales: productData?.sales,
+        user: users.populate("user"),
       });
-
-      await newSale.save();
-      // await Sales.populate(newSale, { path: "user" });
-
-      // Populate the "user" field in the newSale instance
-
-      sales.push(newSale);
-      console.log(sales);
+      allProduct.save();
+      // console.log(allProduct);
+      res.status(200).json({ status: "success", allProduct });
     }
-
-    res.status(200).json({ success: true, sales });
   } catch (error) {
     console.log(error.message);
     res.status(500).json({ error: "Failed to add the sold products" });

@@ -12,11 +12,12 @@ const salesSchema = new mongoose.Schema({
     type: Number,
     default: 0,
   },
-  user: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "User",
-    require: true,
-  },
+  user: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+    },
+  ],
 });
 
 const Sales = mongoose.model("sales", salesSchema);
