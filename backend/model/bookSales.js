@@ -3,6 +3,7 @@ import mongoose from "mongoose";
 const salesSchema = new mongoose.Schema({
   productId: {
     type: mongoose.Schema.Types.ObjectId,
+
     require: true,
   },
   title: {

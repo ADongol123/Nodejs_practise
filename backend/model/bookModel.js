@@ -8,6 +8,7 @@ const bookModel = mongoose.Schema(
     price: { type: Number, required: true },
     discounts: { type: Number },
     image: { type: String, required: true },
+    category: { type: String, required: true },
     views: {
       type: Number,
       // required: true,
