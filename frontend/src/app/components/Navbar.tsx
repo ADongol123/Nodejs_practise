@@ -7,6 +7,7 @@ import { AiOutlineSearch, AiOutlineHeart } from "react-icons/ai";
 import { MdOutlinePersonOutline } from "react-icons/md";
 import { IoLocationOutline } from "react-icons/io5";
 import { FiShoppingCart } from "react-icons/fi";
+import { RiAdminFill } from "react-icons/ri"
 import { navdata } from '../data/navdata';
 import { useRouter } from 'next/navigation';
 import Drawer from './Drawer';
@@ -29,11 +30,16 @@ const Navbar = () => {
 
   return (
     <div className="px-14">
-      <div className="flex justify-end gap-5 pt-5">
-        <IoLocationOutline className="h-5 w-5 cursor-pointer" />
-        <AiOutlineHeart className="h-5 w-5 cursor-pointer" />
-        <MdOutlinePersonOutline className="h-5 w-5 cursor-pointer" />
-        <FiShoppingCart className="h-5 w-5 cursor-pointer" onClick={() => setCartOpen(!cartopen)} />
+      <div className='flex justify-between items-center pt-5'>
+        <div className='border border-gray rounded-md p-2 hover:bg-[#f8e9ec] cursor-pointer' onClick={() => router.push("pages/admin")}>
+          <RiAdminFill className='h-5 w-5 hover: text-black' />
+        </div>
+        <div className="flex justify-end gap-5 ">
+          <IoLocationOutline className="h-5 w-5 cursor-pointer" />
+          <AiOutlineHeart className="h-5 w-5 cursor-pointer" />
+          <MdOutlinePersonOutline className="h-5 w-5 cursor-pointer" />
+          <FiShoppingCart className="h-5 w-5 cursor-pointer" onClick={() => setCartOpen(!cartopen)} />
+        </div>
       </div>
       {cartopen ? <Drawer cart={cart} cartopen={cartopen} setCartOpen={setCartOpen} /> : null}
       <div className='flex items-center justify-between py-5'>
