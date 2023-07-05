@@ -43,9 +43,79 @@ const FeaturedBooks = () => {
         name: "Rich Dad Poor Dad",
         brand: "Unique",
         price: "2.3"
+      },
+      {
+        id: 1,
+        image: "",
+        name: "Rich Dad Poor Dad",
+        brand: "Unique",
+        price: "2.3"
+      },
+      {
+        id: 2,
+        image: "",
+        name: "Rich Dad Poor Dad",
+        brand: "Unique",
+        price: "2.3"
+      },
+      {
+        id: 3,
+        image: "",
+        name: "Rich Dad Poor Dad",
+        brand: "Unique",
+        price: "2.3"
+      },
+      {
+        id: 4,
+        image: "",
+        name: "Rich Dad Poor Dad",
+        brand: "Unique",
+        price: "2.3"
+      },
+      {
+        id: 5,
+        image: "",
+        name: "Rich Dad Poor Dad",
+        brand: "Unique",
+        price: "2.3"
       }
     ],
     "On Sale": [
+      {
+        id: 1,
+        image: "",
+        name: "Rich Dad Poor Dad",
+        brand: "Unique",
+        price: "2.3"
+      },
+      {
+        id: 2,
+        image: "",
+        name: "Rich Dad Poor Dad",
+        brand: "Unique",
+        price: "2.3"
+      },
+      {
+        id: 3,
+        image: "",
+        name: "Rich Dad Poor Dad",
+        brand: "Unique",
+        price: "2.3"
+      },
+      {
+        id: 4,
+        image: "",
+        name: "Rich Dad Poor Dad",
+        brand: "Unique",
+        price: "2.3"
+      },
+      {
+        id: 5,
+        image: "",
+        name: "Rich Dad Poor Dad",
+        brand: "Unique",
+        price: "2.3"
+      },
       {
         id: 1,
         image: "",
@@ -117,6 +187,41 @@ const FeaturedBooks = () => {
         name: "Rich Dad Poor Dad",
         brand: "Unique",
         price: "2.3"
+      },
+      {
+        id: 1,
+        image: "",
+        name: "Rich Dad Poor Dad",
+        brand: "Unique",
+        price: "2.3"
+      },
+      {
+        id: 2,
+        image: "",
+        name: "Rich Dad Poor Dad",
+        brand: "Unique",
+        price: "2.3"
+      },
+      {
+        id: 3,
+        image: "",
+        name: "Rich Dad Poor Dad",
+        brand: "Unique",
+        price: "2.3"
+      },
+      {
+        id: 4,
+        image: "",
+        name: "Rich Dad Poor Dad",
+        brand: "Unique",
+        price: "2.3"
+      },
+      {
+        id: 5,
+        image: "",
+        name: "Rich Dad Poor Dad",
+        brand: "Unique",
+        price: "2.3"
       }
     ]
   }
@@ -139,7 +244,7 @@ const FeaturedBooks = () => {
           <Tab.Panels className="w-[80%] mx-auto">
             {Object.values(categories).map((details, ids) => (
               <Tab.Panel key={ids} className="w-full">
-                <div className="flex items-center">
+                <div className="grid grid-cols-5 gap-4 grid-flow-row">
                   {details?.map((post) => (
                     <div key={post.id} className="w-full">
                       <BookCard
