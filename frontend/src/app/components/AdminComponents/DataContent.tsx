@@ -16,7 +16,7 @@ const DataContent = ({ data, handleFormSubmit, handleInputChange, formData, hand
             <h1>{details?.title}</h1>
             {details?.type === "file" ? <div className="flex items-center justify-center my-5">
               <label className="relative inline-flex items-center">
-                <input value={""} type="file" accept="image/" className="hidden" name="pic" onChange={handleProductImageUploader} />
+                <input value={""} type="file" accept="image/" className="hidden" name="image" onChange={handleProductImageUploader} />
                 <div className="bg-[#0a8080] hover:bg-[#0b6666] text-white font-semibold gap-2 py-2 px-4 rounded flex items-center">
                   <FcFolder />
                   <p>Select File</p>

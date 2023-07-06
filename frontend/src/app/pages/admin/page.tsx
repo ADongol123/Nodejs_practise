@@ -6,11 +6,11 @@ import Navbar from '@/app/components/Navbar'
 import { authorInput, productInput } from '@/app/data/inputdata'
 import axios from 'axios'
 import React from 'react'
-
+import Noimg from "../../../../public/images/null.jpg"
 const page = () => {
   const [page, setPage] = React.useState("Product")
   const [formData, setFormData] = React.useState({
-
+    category: "site"
   })
   const [productImage, setProductImage] = React.useState<any>(" ")
   console.log(formData, "form")
@@ -22,7 +22,7 @@ const page = () => {
   };
 
   const handleProductImageUploader = (e: any) => {
-    const file = e.target.files[0];
+    const file = e.target.files[0] ? e.target.files[0] : Noimg;
     TransformFile(file)
 
   }
@@ -34,7 +34,7 @@ const page = () => {
       reader.onloadend = () => {
         setProductImage(reader.result)
         setFormData({
-          pic: reader.result
+          image: reader.result
         })
       }
     }
