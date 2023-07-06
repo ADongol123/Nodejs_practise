@@ -2,27 +2,32 @@ export const productInput = [
   {
     id: 1,
     title: "Product Name",
-    type: "text"
+    type: "text",
+    name: "name"
   },
   {
     id: 2,
     title: "Product Brand",
-    type: "text"
+    type: "text",
+    name: "brand"
   },
   {
     id: 3,
     title: "Product Description",
-    type: "text"
+    type: "text",
+    name: "description"
   },
   {
     id: 4,
     title: "Product Price",
-    type: "number"
+    type: "number",
+    name: "price"
   },
   {
     id: 5,
     title: "Product Image",
-    type: "text"
+    type: "file",
+    name: "image"
   }
 ]
 

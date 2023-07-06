@@ -9,15 +9,7 @@ export const accessProduct = asyncHandler(async (req, res) => {
   const { name, brand, description, price, discounts, image, category } =
     req.body;
 
-  if (
-    !name ||
-    !brand ||
-    !description ||
-    !price ||
-    !discounts ||
-    !image ||
-    !category
-  ) {
+  if (!name || !brand) {
     res.status(400);
     throw new Error("All fields must be filled");
   }

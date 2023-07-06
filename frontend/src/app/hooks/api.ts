@@ -6,5 +6,5 @@ export const useFetchAllBooks = () =>
   useQuery([queryKey?.FETCH_ALL_BOOKS], () => getApi("books/fetchProduct"));
 
 export const postBookData = async (payload: any) => {
-  await postApi("products/accessProduct/", payload);
+  await postApi("books/accessProduct/", payload);
 };
