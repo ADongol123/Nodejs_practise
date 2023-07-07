@@ -10,7 +10,6 @@ import Noimg from "../../../../public/images/null.jpg"
 const page = () => {
   const [page, setPage] = React.useState("Product")
   const [formData, setFormData] = React.useState({
-    category: "site"
   })
   const [productImage, setProductImage] = React.useState<any>(" ")
   console.log(formData, "form")
